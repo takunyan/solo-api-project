@@ -3,35 +3,34 @@ const { Restaurant } = require("../entity/Restaurant");
 
 module.exports = {
   Query: {
-    Restaurants: () => {
-      return getRepository(Restaurant).find();
+    Restaurants: async () => {
+      return await getRepository(Restaurant).find();
     },
   },
-  //   Mutation: {
-  //     AddPokemon: (parent, args) => {
-  //       data.pokemon.push(args.input);
-  //       return data.pokemon[data.pokemon.length - 1];
-  //     },
-  //     EditPokemon: (parent, args) => {
-  //       let editedPokemon;
-  //       data.pokemon.forEach((pokemon) => {
-  //         if (pokemon.id === args.input.id) {
-  //           for (let key in args.input.patch) {
-  //             pokemon[key] = args.input.patch[key];
-  //           }
-  //           editedPokemon = pokemon;
-  //         }
-  //       });
-  //       return editedPokemon;
-  //     },
-  //     DeletePokemon: (parent, args) => {
-  //       let deletedPokemon;
-  //       data.pokemon.forEach((pokemon, index) => {
-  //         if (pokemon.id === args.id) {
-  //           [deletedPokemon] = data.pokemon.splice(index, 1);
-  //         }
-  //       });
-  //       return deletedPokemon;
-  //     },
-  //  },
+  Mutation: {
+    AddRestaurant: async (parent, args) => {
+      return await getRepository(Restaurant).save(args.input);
+    },
+    EditRestaurant: async (parent, args) => {
+      let editedRestaurant = await getRepository(Restaurant).findOne(args.id);
+      if (!editedRestaurant) {
+        return;
+      }
+      for (const key in args.input.patch) {
+        editedRestaurant[key] = args.input.patch[key];
+      }
+      await getRepository(Restaurant).update(args.input.id, editedRestaurant);
+      return editedRestaurant;
+    },
+    DeleteRestaurant: async (parent, args) => {
+      const deletedRestaurant = await getRepository(Restaurant).findOne(
+        args.id
+      );
+      if (!deletedRestaurant) {
+        return;
+      }
+      await getRepository(Restaurant).delete(args.id);
+      return deletedRestaurant;
+    },
+  },
 };

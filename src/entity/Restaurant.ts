@@ -11,10 +11,10 @@ export class Restaurant {
   @Column()
   genre: string;
 
-  @Column()
+  @Column({ nullable: true })
   comment: string;
 
-  @Column()
+  @Column({ nullable: true })
   score: number;
 }
 
