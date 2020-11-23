@@ -1,17 +1,7 @@
 const express = require("express");
-const { ApolloServer, gql } = require("apollo-server-express");
-
-const typeDefs = gql`
-  type Query {
-    hello: String
-  }
-`;
-
-const resolvers = {
-  Query: {
-    hello: () => "Hello world!",
-  },
-};
+const { ApolloServer } = require("apollo-server-express");
+const typeDefs = require("./schema/restaurant");
+const resolvers = require("./resolver/restaurant");
 
 const server = new ApolloServer({ typeDefs, resolvers });
 
