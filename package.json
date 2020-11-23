@@ -1,20 +1,27 @@
 {
-   "name": "API-Project",
-   "version": "0.0.1",
-   "description": "Awesome project developed with TypeORM.",
-   "devDependencies": {
-      "ts-node": "3.3.0",
-      "@types/node": "^8.0.29",
-      "typescript": "3.3.3333"
-   },
-   "dependencies": {
-      "apollo-server-express": "^2.19.0",
-      "express": "^4.17.1",
-      "pg": "^8.4.0",
-      "reflect-metadata": "^0.1.10",
-      "typeorm": "0.2.29"
-   },
-   "scripts": {
-      "start": "ts-node src/index.ts"
-   }
+  "name": "API-Project",
+  "version": "0.0.1",
+  "description": "Awesome project developed with TypeORM.",
+  "devDependencies": {
+    "@types/node": "^8.0.29",
+    "@typescript-eslint/eslint-plugin": "^4.8.1",
+    "@typescript-eslint/parser": "^4.8.1",
+    "eslint": "^7.14.0",
+    "eslint-config-google": "^0.14.0",
+    "nodemon": "^2.0.6",
+    "prettier": "^2.2.0",
+    "ts-node": "3.3.0",
+    "typescript": "3.3.3333"
+  },
+  "dependencies": {
+    "apollo-server-express": "^2.19.0",
+    "express": "^4.17.1",
+    "pg": "^8.4.0",
+    "reflect-metadata": "^0.1.10",
+    "typeorm": "0.2.29"
+  },
+  "scripts": {
+    "dev": "nodemon src/server.js",
+    "start": "ts-node src/index.ts"
+  }
 }
