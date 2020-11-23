@@ -6,3 +6,4 @@ tmp/
 temp/
 ormconfig.json
 .eslintrc.json
+.env

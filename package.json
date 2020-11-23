@@ -10,18 +10,26 @@
     "eslint-config-google": "^0.14.0",
     "nodemon": "^2.0.6",
     "prettier": "^2.2.0",
-    "ts-node": "3.3.0",
+    "ts-node": "^3.3.0",
     "typescript": "3.3.3333"
   },
   "dependencies": {
     "apollo-server-express": "^2.19.0",
+    "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "pg": "^8.4.0",
     "reflect-metadata": "^0.1.10",
-    "typeorm": "0.2.29"
+    "typeorm": "0.2.29",
+    "typeorm-seeding": "^1.6.1"
   },
   "scripts": {
-    "dev": "nodemon src/server.js",
-    "start": "ts-node src/index.ts"
+    "dev": "nodemon src/index.ts",
+    "start": "ts-node src/index.ts",
+    "orm": "ts-node ./node_modules/typeorm/cli.js --config ormconfig.json",
+    "makeMigrations": "yarn orm migration:generate",
+    "migrate": "yarn orm migration:run",
+    "rollback": "yarn orm migration:revert",
+    "seeder": "ts-node -r dotenv/config ./node_modules/typeorm-seeding/dist/cli.js",
+    "seed": "yarn seeder --configName ormconfig.json seed"
   }
 }
