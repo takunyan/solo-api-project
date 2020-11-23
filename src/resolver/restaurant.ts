@@ -17,7 +17,11 @@ module.exports = {
         return;
       }
       for (const key in args.input.patch) {
-        editedRestaurant[key] = args.input.patch[key];
+        if (key === "id") {
+          editedRestaurant[key] = args.input.id;
+        } else {
+          editedRestaurant[key] = args.input.patch[key];
+        }
       }
       await getRepository(Restaurant).update(args.input.id, editedRestaurant);
       return editedRestaurant;
