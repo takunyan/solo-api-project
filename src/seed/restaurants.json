@@ -4,5 +4,11 @@
     "genre": "Ramen",
     "comment": "too spicy but I am crazy about this",
     "score": "95"
+  },
+  {
+    "name": "いせや",
+    "genre": "Yakitori",
+    "comment": "most popular restaurant",
+    "score": "100"
   }
 ]
